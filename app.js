@@ -5,6 +5,8 @@ const port = 3000
 const exphbs = require('express-handlebars')
 const mongoose = require('mongoose')
 
+const restaurant = require('./restaurant.json')
+
 if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config()
 }
@@ -26,7 +28,8 @@ app.set('view engine', 'hbs')
 app.use(express.static('public'))
 
 app.get('/', (req, res) => {
-  res.render('index')
+  const restaurants = restaurant.results
+  res.render('index', {restaurants})
 })
 
 app.listen(port, () => {
