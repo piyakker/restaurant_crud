@@ -1,0 +1,62 @@
+<div class="container mt-5">
+  <h2 class="mb-5">一起添加新的餐廳吧!</h2>
+  <form action="/restaurants" method="POST">
+    <div class="mb-3 row">
+      <label for="name" class="col-sm-2 col-form-label">餐廳名稱</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="name" name="name" placeholder="麥當勞">
+      </div>
+    </div>
+    <div class="mb-3 row">
+      <label for="name_en" class="col-sm-2 col-form-label">餐廳英文名稱</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="name_en" name="name_en" placeholder="McdDonald's">
+      </div>
+    </div>
+    <div class="mb-3 row">
+      <label for="category" class="col-sm-2 col-form-label">餐廳類型</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="category" name="category" placeholder="美式料理">
+      </div>
+    </div>
+    <div class="mb-3 row">
+      <label for="image" class="col-sm-2 col-form-label">餐廳照片連結</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="image" name="image" placeholder="http://...">
+      </div>
+    </div>
+    <div class="mb-3 row">
+      <label for="location" class="col-sm-2 col-form-label">餐廳地址</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="location" name="location" placeholder="台北市松山區...">
+      </div>
+    </div>
+    <div class="mb-3 row">
+      <label for="phone" class="col-sm-2 col-form-label">餐廳電話</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="phone" name="phone" placeholder="(02)2577-4101">
+      </div>
+    </div>
+    <div class="mb-3 row">
+      <label for="google_map" class="col-sm-2 col-form-label">google地圖連結</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="google_map" name="google_map" placeholder="google.com/map...">
+      </div>
+    </div>
+    <div class="mb-3 row">
+      <label for="rating" class="col-sm-2 col-form-label">評分</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="rating" name="rating" placeholder="4.2">
+      </div>
+    </div>
+    <div class="mb-3 row">
+      <label for="description" class="col-sm-2 col-form-label">餐廳描述</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="description" name="description" placeholder="非常好吃">
+      </div>
+    </div>
+    <div class="m-3 new-button">
+      <button type="submit" class="btn btn-danger">確認送出</button>
+    </div>
+  </form>
+</div>
