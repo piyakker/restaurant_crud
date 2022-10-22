@@ -32,11 +32,21 @@ app.get('/', (req, res) => {
   res.render('index', {restaurants})
 })
 
-app.get('/restaurants/:id', (req, res) => {
+app.get('/restaurants/:restaurant_id', (req, res) => {
   const restaurants = restaurantList.results
-  const id = req.params.id
+  const id = req.params.restaurant_id
   const restaurant = restaurants.find(restaurant => restaurant.id === Number(id))
   res.render('show', { restaurant: restaurant})
+})
+
+app.get('/search', (req, res) => {
+  const restaurants = restaurantList.results
+  const keyword = req.query.keyword.trim()
+  const filteredRestaurants = restaurants.filter(restaurant => 
+    restaurant.name.toLowerCase().includes(keyword.toLowerCase()) || 
+    restaurant.category.includes(keyword.toLowerCase())
+    )
+  res.render('index', {restaurants: filteredRestaurants, keyword})
 })
 
 app.listen(port, () => {
