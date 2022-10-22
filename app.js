@@ -1,6 +1,7 @@
 const express = require('express')
 const app = express()
 const port = 3000
+const Restaurant = require('./model/restaurant')
 
 const exphbs = require('express-handlebars')
 const mongoose = require('mongoose')
