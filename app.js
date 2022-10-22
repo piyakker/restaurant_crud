@@ -46,11 +46,10 @@ app.get('/restaurants/:restaurant_id', (req, res) => {
 app.get('/search', (req, res) => {
   const restaurants = restaurantList.results
   const keyword = req.query.keyword.trim()
-  const filteredRestaurants = restaurants.filter(restaurant => 
-    restaurant.name.toLowerCase().includes(keyword.toLowerCase()) || 
-    restaurant.category.includes(keyword.toLowerCase())
-    )
-  res.render('index', {restaurants: filteredRestaurants, keyword})
+  const regex = new RegExp(keyword, 'i')
+  Restaurant.find({ $or: [{"name": { $regex: regex }}, {"category": { $regex: regex }}]  })
+  .lean()
+    .then(filteredRestaurants => res.render('index', { restaurants: filteredRestaurants, keyword }))
 })
 
 app.listen(port, () => {
