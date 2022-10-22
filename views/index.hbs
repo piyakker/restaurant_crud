@@ -24,7 +24,7 @@
       {{#if restaurants}}
       <div class="row row-cols-sm-3">
         {{#each restaurants}}
-        <a href="/restaurants/{{this.id}}" class="text-secondary restaurant">
+        <div class="text-secondary restaurant">
           <div class="card mb-3">
             <img class="card-img-top" src="{{this.image}}" alt="{{this.name}}">
             <div class="card-body p-3">
@@ -38,10 +38,12 @@
                 {{this.rating}}
                 <i class="fas fa-star fa-xs"></i>
               </span>
-
+              <div>
+                <a href="/restaurants/{{this._id}}">detail</a>
+              </div>
             </div>
           </div>
-        </a>
+        </div>
         {{/each}}
       </div>
       {{else}}

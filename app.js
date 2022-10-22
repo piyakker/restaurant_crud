@@ -29,7 +29,6 @@ app.set('view engine', 'hbs')
 app.use(express.static('public'))
 
 app.get('/', (req, res) => {
-  const restaurants = restaurantList.results
   Restaurant.find()
   .lean()
     .then(restaurants => { res.render('index', { restaurants }) })
@@ -37,10 +36,11 @@ app.get('/', (req, res) => {
 })
 
 app.get('/restaurants/:restaurant_id', (req, res) => {
-  const restaurants = restaurantList.results
   const id = req.params.restaurant_id
-  const restaurant = restaurants.find(restaurant => restaurant.id === Number(id))
-  res.render('show', { restaurant: restaurant})
+  Restaurant.findById(id)
+  .lean()
+    .then(restaurant => res.render('show', { restaurant }))
+    .catch(error => console.log(error))  
 })
 
 app.get('/search', (req, res) => {
