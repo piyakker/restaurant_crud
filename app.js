@@ -74,6 +74,34 @@ app.post('/restaurants', (req, res) => {
   .catch(error => console.log(error))
 })
 
+app.get('/restaurants/:restaurant_id/edit', (req, res) => {
+  const id = req.params.restaurant_id
+  Restaurant.findById(id)
+    .lean()
+    .then(restaurant => res.render('edit', { restaurant }))
+    .catch(error => console.log(error))
+})
+
+app.post('/restaurants/:restaurant_id/edit', (req, res) => {
+  const editRestaurant = req.body
+  const id = req.params.restaurant_id
+  return Restaurant.findById(id)
+  .then(restaurant => {
+    restaurant.name= editRestaurant.name
+    restaurant.name_en= editRestaurant.name_en
+    restaurant.category= editRestaurant.category
+    restaurant.image= editRestaurant.image
+    restaurant.location= editRestaurant.location
+    restaurant.phone= editRestaurant.phone
+    restaurant.google_map= editRestaurant.google_map
+    restaurant.rating= editRestaurant.rating
+    restaurant.description= editRestaurant.description
+    restaurant.save()
+  })
+  .then(() => res.redirect(`/restaurants/${id}`))
+  .catch(error => console.log(error))
+})
+
 
 app.listen(port, () => {
   console.log(`listening on http://localhost:${port}`)
