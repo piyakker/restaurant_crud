@@ -2,10 +2,13 @@ const express = require('express')
 const router = express.Router()
 const Restaurant = require('../../models/restaurant')
 
+//取得新增餐廳的表單頁面
 router.get('/new', (req, res) => {
   res.render('new')
 })
 
+//查詢符合關鍵字的餐廳
+//透過取回的排序的屬性和值來 sort
 router.get('/search', (req, res) => {
   const keyword = req.query.keyword.trim()
   const [property, sortBy] = req.query.sort.split('_')
@@ -16,6 +19,7 @@ router.get('/search', (req, res) => {
     .then(filteredRestaurants => res.render('index', { restaurants: filteredRestaurants, keyword }))
 })
 
+//瀏覽特定餐廳
 router.get('/:restaurant_id', (req, res) => {
   const id = req.params.restaurant_id
   return Restaurant.findById(id)
@@ -24,20 +28,9 @@ router.get('/:restaurant_id', (req, res) => {
     .catch(error => console.log(error))
 })
 
-
+//新增餐廳
 router.post('/', (req, res) => {
-  const { name, name_en, category, image, location, phone, google_map, rating, description } = req.body
-  return Restaurant.create({
-    name: name,
-    name_en: name_en,
-    category: category,
-    image: image,
-    location: location,
-    phone: phone,
-    google_map: google_map,
-    rating: rating,
-    description: description
-  })
+  return Restaurant.create(req.body)
     .then(() => { res.redirect('/') })
     .catch(error => console.log(error))
 })
@@ -50,6 +43,7 @@ router.get('/:restaurant_id/edit', (req, res) => {
     .catch(error => console.log(error))
 })
 
+//修改特定餐廳資料
 router.put('/:restaurant_id', (req, res) => {
   const { name, name_en, category, image, location, phone, google_map, rating, description } = req.body
   const id = req.params.restaurant_id
@@ -70,6 +64,7 @@ router.put('/:restaurant_id', (req, res) => {
     .catch(error => console.log(error))
 })
 
+//刪除特定餐廳
 router.delete('/:restaurant_id', (req, res) => {
   const id = req.params.restaurant_id
   return Restaurant.findById(id)
