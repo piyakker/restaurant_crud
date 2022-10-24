@@ -5,7 +5,7 @@ const db = require('../../config/mongoose')
 
 db.once('open', () => {
   restaurantList.results.forEach(restaurant => {
-    Restaurant.create({ 
+    Restaurant.create({
       name: restaurant.name,
       name_en: restaurant.name_en,
       category: restaurant.category,
