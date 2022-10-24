@@ -8,9 +8,11 @@ router.get('/new', (req, res) => {
 
 router.get('/search', (req, res) => {
   const keyword = req.query.keyword.trim()
+  const [property, sortBy] = req.query.sort.split('_')
   const regex = new RegExp(keyword, 'i')
   Restaurant.find({ $or: [{ "name": { $regex: regex } }, { "category": { $regex: regex } }] })
     .lean()
+    .sort({ [property]: sortBy })
     .then(filteredRestaurants => res.render('index', { restaurants: filteredRestaurants, keyword }))
 })
 
