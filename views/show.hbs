@@ -38,6 +38,10 @@
         style="max-width: 600px;">
     </div>
     <div class="m-4 text-center">
+      <a href="/restaurants/{{restaurant._id}}/edit">edit</a>
+      <form action="/restaurants/{{ restaurant._id }}?_method=DELETE" method="POST" style="display: inline;" class="mx-3">
+        <button type="submit">delete</button>
+      </form>
       <a href="/">back</a>
     </div>
   </div>

@@ -5,6 +5,7 @@ const Restaurant = require('./models/restaurant')
 
 const exphbs = require('express-handlebars')
 const mongoose = require('mongoose')
+const methodOverride = require('method-override')
 
 const restaurantList = require('./restaurant.json')
 const restaurant = require('./models/restaurant')
@@ -29,6 +30,7 @@ app.set('view engine', 'hbs')
 
 app.use(express.urlencoded({ extended: true }))
 app.use(express.static('public'))
+app.use(methodOverride('_method'))
 
 app.get('/', (req, res) => {
   Restaurant.find()
@@ -83,7 +85,7 @@ app.get('/restaurants/:restaurant_id/edit', (req, res) => {
     .catch(error => console.log(error))
 })
 
-app.post('/restaurants/:restaurant_id/edit', (req, res) => {
+app.put('/restaurants/:restaurant_id', (req, res) => {
   const { name, name_en, category, image, location, phone, google_map, rating, description } = req.body
   const id = req.params.restaurant_id
   return Restaurant.findById(id)
@@ -103,7 +105,7 @@ app.post('/restaurants/:restaurant_id/edit', (req, res) => {
   .catch(error => console.log(error))
 })
 
-app.post('/restaurants/:restaurant_id/delete', (req, res) => {
+app.delete('/restaurants/:restaurant_id', (req, res) => {
   const id = req.params.restaurant_id
   return Restaurant.findById(id)
   .then(restaurant => restaurant.remove())
