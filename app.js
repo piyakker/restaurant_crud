@@ -59,17 +59,17 @@ app.get('/new', (req, res) => {
 })
 
 app.post('/restaurants', (req, res) => {
-  const newRestaurant = req.body
+  const { name, name_en, category, image, location, phone, google_map, rating, description } = req.body
   return Restaurant.create({
-    name: newRestaurant.name,
-    name_en: newRestaurant.name_en,
-    category: newRestaurant.category,
-    image: newRestaurant.image,
-    location: newRestaurant.location,
-    phone: newRestaurant.phone,
-    google_map: newRestaurant.google_map,
-    rating: newRestaurant.rating,
-    description: newRestaurant.description
+    name: name,
+    name_en: name_en,
+    category: category,
+    image: image,
+    location: location,
+    phone: phone,
+    google_map: google_map,
+    rating: rating,
+    description: description
   })
   .then(() => {res.redirect('/')})
   .catch(error => console.log(error))
@@ -84,19 +84,19 @@ app.get('/restaurants/:restaurant_id/edit', (req, res) => {
 })
 
 app.post('/restaurants/:restaurant_id/edit', (req, res) => {
-  const editRestaurant = req.body
+  const { name, name_en, category, image, location, phone, google_map, rating, description } = req.body
   const id = req.params.restaurant_id
   return Restaurant.findById(id)
   .then(restaurant => {
-    restaurant.name= editRestaurant.name
-    restaurant.name_en= editRestaurant.name_en
-    restaurant.category= editRestaurant.category
-    restaurant.image= editRestaurant.image
-    restaurant.location= editRestaurant.location
-    restaurant.phone= editRestaurant.phone
-    restaurant.google_map= editRestaurant.google_map
-    restaurant.rating= editRestaurant.rating
-    restaurant.description= editRestaurant.description
+    restaurant.name= name
+    restaurant.name_en= name_en
+    restaurant.category= category
+    restaurant.image= image
+    restaurant.location= location
+    restaurant.phone= phone
+    restaurant.google_map= google_map
+    restaurant.rating= rating
+    restaurant.description= description
     restaurant.save()
   })
   .then(() => res.redirect(`/restaurants/${id}`))
