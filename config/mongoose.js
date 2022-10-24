@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
 
+// 設定若非正式環境，就引入dotenv，便可透過.env取得環境變數
 if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config()
 }
