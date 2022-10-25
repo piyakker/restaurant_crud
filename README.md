@@ -57,3 +57,17 @@ npm run dev
 ![create](./public/img/create.jpg)
 
 ![detail](./public/img/detail.jpg)
+
+## 環境及安裝套件
+
++ Visual Studio Code - 開發環境
++ Express - 4.16.4
++ Express-handlebars - 3.0.0
++ Bootstrap - 5.2.2
++ Mongoose - 5.9.7
++ Method-override - 3.0.0
++ dotenv - 16.0.3
+
+## 開發者
+
++ Piyakker
