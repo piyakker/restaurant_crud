@@ -13,11 +13,11 @@
             </div>
           </div>
           <div class="input-group">
-            <select class="form-select" id="sort" name="sort">
-              <option value="name_asc">A > Z</option>
-              <option value="name_desc">Z > A</option>
-              <option value="category_asc">類別</option>
-              <option value="location_asc">地區</option>
+            <select class="form-select" id="sort" name="sort" value ={{sort}}>
+              <option value="name">A > Z</option>
+              <option value="-name">Z > A</option>
+              <option value="category">類別</option>
+              <option value="location">地區</option>
             </select>
           </div>
         </div>
@@ -48,8 +48,8 @@
               </div>
             </div>
             <div class="mb-3 text-end">
-              <a href="/restaurants/{{this._id}}">detail</a>
-              <a href="/restaurants/{{this._id}}/edit" class="mx-3">edit</a>
+              <a href="/restaurants/{{this._id}}" role='button'>detail</a>
+              <a href="/restaurants/{{this._id}}/edit" class="mx-3" role='button'>edit</a>
               <form action="/restaurants/{{ this._id }}?_method=DELETE" method="POST" style="display: inline;">
                 <button type="submit">delete</button>
               </form>

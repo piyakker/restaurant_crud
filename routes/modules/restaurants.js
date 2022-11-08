@@ -11,11 +11,11 @@ router.get('/new', (req, res) => {
 //透過取回的排序的屬性和值來 sort
 router.get('/search', (req, res) => {
   const keyword = req.query.keyword.trim()
-  const [property, sortBy] = req.query.sort.split('_')
+  const sort = req.query.sort
   const regex = new RegExp(keyword, 'i')
   Restaurant.find({ $or: [{ "name": { $regex: regex } }, { "category": { $regex: regex } }] })
     .lean()
-    .sort({ [property]: sortBy })
+    .sort(sort)
     .then(filteredRestaurants => res.render('index', { restaurants: filteredRestaurants, keyword }))
 })
 
