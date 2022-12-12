@@ -1,4 +1,4 @@
-//validate用的函式
+// validate用的函式
 (() => {
   'use strict'
 

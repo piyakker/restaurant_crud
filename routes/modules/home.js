@@ -3,7 +3,7 @@ const router = express.Router()
 
 const Restaurant = require('../../models/restaurant')
 
-//瀏覽所有餐廳
+// 瀏覽所有餐廳
 router.get('/', (req, res) => {
   Restaurant.find()
     .lean()
