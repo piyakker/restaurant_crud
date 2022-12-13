@@ -45,7 +45,7 @@ npm install
 4. 開啟專案
 
 ```
-npm run dev
+npm run start
 ```
 
 當終端機顯示 server: <http://localhost:3000> ，表示執行成功。
