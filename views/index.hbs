@@ -13,11 +13,11 @@
             </div>
           </div>
           <div class="input-group">
-            <select class="form-select" id="sort" name="sort" value ={{sort}}>
-              <option value="name">A > Z</option>
-              <option value="-name">Z > A</option>
-              <option value="category">類別</option>
-              <option value="location">地區</option>
+            <select class="form-select" id="sort" name="sort">
+              <option value="name" {{#ifCond sort "name"}}Selected{{/ifCond}}>A > Z</option>
+              <option value="-name" {{#ifCond sort "-name"}}Selected{{/ifCond}}>Z > A</option>
+              <option value="category" {{#ifCond sort "category"}}Selected{{/ifCond}}>類別</option>
+              <option value="location" {{#ifCond sort "location"}}Selected{{/ifCond}}>地區</option>
             </select>
           </div>
         </div>
