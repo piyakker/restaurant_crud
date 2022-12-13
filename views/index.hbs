@@ -51,7 +51,7 @@
               <a href="/restaurants/{{this._id}}" role='button' class="btn btn-success">detail</a>
               <a href="/restaurants/{{this._id}}/edit" class="mx-3 btn btn-warning" role='button'>edit</a>
               <form action="/restaurants/{{ this._id }}?_method=DELETE" method="POST" style="display: inline;">
-                <button type="submit" class="btn btn-danger">delete</button>
+                <button type="submit" class="btn btn-danger"onclick="return confirm('確定要刪除嗎?');">delete</button>
               </form>
             </div>
           </div>
