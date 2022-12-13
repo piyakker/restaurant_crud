@@ -35,7 +35,9 @@
           {{#each restaurants}}
           <div class="text-secondary restaurant">
             <div class="card mb-3">
+              <a href="/restaurants/{{this._id}}">
               <img class="card-img-top" src="{{this.image}}" alt="{{this.name}}">
+              </a>
               <div class="card-body p-3">
                 <h6 class="card-title mb-1">{{this.name}}</h6>
                 <div class="restaurant-category mb-1">
