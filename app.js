@@ -9,8 +9,8 @@ const app = express()
 const port = 3000
 
 app.engine('hbs', exphbs({ defaultLayout: 'main', extname: 'hbs', helpers: {
-  ifCond: function (arg1, arg2, options) {
-    return (arg1 == arg2) ? options.fn(this) : options.inverse(this)
+  ifEqual: function (arg1, arg2, options) {
+    return (arg1 === arg2) ? options.fn(this) : options.inverse(this)
   }
 } }))
 app.set('view engine', 'hbs')
